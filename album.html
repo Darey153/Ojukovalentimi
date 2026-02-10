@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Our Memories 💕</title>
+  <style>
+    body {
+      margin: 0;
+      font-family: Arial, sans-serif;
+      background: #111;
+      color: white;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      height: 100vh;
+    }
+    h1 { margin-bottom: 20px; }
+    .slideshow {
+      width: 90%;
+      max-width: 500px;
+      position: relative;
+    }
+    .slideshow img {
+      width: 100%;
+      border-radius: 15px;
+      display: none;
+    }
+    .slideshow img.active { display: block; }
+  </style>
+</head>
+<body>
+  <audio autoplay loop>
+    <source src="music/love-song.mp3" type="audio/mpeg" />
+  </audio>
+
+  <h1>Us 💖</h1>
+  <div class="slideshow">
+    <img src="photos/photo1.jpg" class="active" />
+    <img src="photos/photo2.jpg" />
+    <img src="photos/photo3.jpg" />
+  </div>
+
+  <script>
+    let index = 0;
+    const photos = document.querySelectorAll('.slideshow img');
+
+    setInterval(() => {
+      photos[index].classList.remove('active');
+      index = (index + 1) % photos.length;
+      photos[index].classList.add('active');
+    }, 2500);
+  </script>
+</body>
+</html>
+
