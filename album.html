@@ -31,7 +31,7 @@
   </style>
 </head>
 <body>
-  <audio autoplay loop>
+  <audio id="albumMusic" autoplay>
     <source src="music/love-song.mp3" type="audio/mpeg" />
   </audio>
 
@@ -58,14 +58,27 @@
 
   </div>
 
+  <div id="loveNote"> I LOVE YOU ❤️</div>
+
   <script>
     let index = 0;
     const photos = document.querySelectorAll('.slideshow img');
+    const photos = document.querySelectorAll('.slideshow img');
+    const music = document.getElementById('albumMusic');
+    const note = document.getElementById('loveNote');
+    
+    music.addEventListener('ended', () => {
+      note.classList.add('show');
+    });
 
     setInterval(() => {
       photos[index].classList.remove('active');
-      index = (index + 1) % photos.length;
-      photos[index].classList.add('active');
+      index++;
+      if (index < photos.length) {
+        photos[index].classList.add('active');
+      } else {
+        note.classList.add('show');
+      }
     }, 2500);
   </script>
 </body>
